@@ -1,0 +1,25 @@
+# Maven
+target/
+
+# IntelliJ
+.idea/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Compiled
+*.class
+
+# Eclipse
+.settings/
+.project
+.classpath
+
+# Temporary
+*.tmp
