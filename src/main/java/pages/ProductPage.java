@@ -5,6 +5,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,6 +15,7 @@ public class ProductPage {
     private static final String PRODUCT_DETAILS = ".inventory_item_desc";
     private static final String PRODUCT_PRICE = ".inventory_item_price";
     private static final String PRODUCT_FILTER = ".product_sort_container";
+    private static final String PRODUCT_DETAIL_PAGE_NAME = ".inventory_details_name.large_size";
 
     WebDriver driver;
     WebDriverWait wait;
@@ -48,5 +50,10 @@ public class ProductPage {
         WebElement inventoryProductNumber = inventoryProducts.get(listProductNumberIndex);
         String actualInventoryProductPrice = inventoryProductNumber.findElement(By.cssSelector(this.PRODUCT_PRICE)).getText();
         return actualInventoryProductPrice;
+    }
+
+    public void navigateToProductPage(String productName){
+        driver.findElement(By.cssSelector(this.PRODUCT_NAME)).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(this.PRODUCT_DETAIL_PAGE_NAME)));
     }
 }
