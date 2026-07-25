@@ -40,4 +40,21 @@ public class ProductDetailTest extends BaseTest {
         //Go back to the main page
         productDetailPageActions.navigateToHomePage();
     }
+
+    @Test
+    public void addToCartTest(){
+        // Valid login
+        LoginPage loginPageActions = new LoginPage(driver, wait);
+        loginPageActions.accessLoginPage();
+        loginPageActions.validLogin("standard_user", "secret_sauce");
+
+        // Valid navigate to product page
+        ProductPage productPageActions = new ProductPage(driver, wait);
+        productPageActions.navigateToProductPage(PRODUCT_NAME_1);
+
+        //Add product to cart
+        ProductDetailPage productDetailPageActions = new ProductDetailPage(driver, wait);
+        productDetailPageActions.addCurrentProductToCart();
+        productDetailPageActions.removeProductFromCart();
+    }
 }

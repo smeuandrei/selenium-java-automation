@@ -37,12 +37,13 @@ public class BaseTest {
                         "profile.password_manager_leak_detection", false));
 
         driver = new ChromeDriver(options);
+        driver.manage().deleteAllCookies();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
     }
 
     @AfterMethod
     public void tearDown() {
+        driver.manage().deleteAllCookies();
         driver.quit();
     }
 }

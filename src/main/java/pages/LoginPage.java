@@ -6,11 +6,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage {
-    private String mainUrl = "https://www.saucedemo.com";
-    private String usernameInput = "user-name";
-    private String passwordInput = "password";
-    private String loginButton = "login-button";
-    private String shoppingCartContainer = "shopping_cart_container";
+    private static final String MAIN_URL = "https://www.saucedemo.com";
+    private static final String USERNAME_FIELD = "user-name";
+    private static final String PASSWORD_FIELD = "password";
+    private static final String LOGIN_BUTTON = "login-button";
+    private static final String SHOPPING_CART_CONTAINER = "shopping_cart_container";
 
     WebDriver driver;
     WebDriverWait wait;
@@ -21,24 +21,25 @@ public class LoginPage {
     }
 
      public void accessLoginPage() {
-        driver.get(this.mainUrl);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(this.usernameInput)));
+        driver.get(MAIN_URL);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(USERNAME_FIELD)));
     }
 
     public void login(String username, String password) {
-        driver.findElement(By.id(this.usernameInput)).sendKeys(username);
-        driver.findElement(By.id(this.passwordInput)).sendKeys(password);
-        driver.findElement(By.id(this.loginButton)).click();
+        driver.findElement(By.id(USERNAME_FIELD)).sendKeys(username);
+        driver.findElement(By.id(PASSWORD_FIELD)).sendKeys(password);
+        driver.findElement(By.id(LOGIN_BUTTON)).click();
+        System.out.println(driver.manage().getCookies());
     }
 
     public void clearLoginFields() {
-        driver.findElement(By.id(this.usernameInput)).clear();
-        driver.findElement(By.id(this.passwordInput)).clear();
+        driver.findElement(By.id(USERNAME_FIELD)).clear();
+        driver.findElement(By.id(PASSWORD_FIELD)).clear();
     }
 
     public void validLogin(String username, String password) {
         login(username, password);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(this.shoppingCartContainer)));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(SHOPPING_CART_CONTAINER)));
     }
 
     public String invalidLogin(String username, String password) {
