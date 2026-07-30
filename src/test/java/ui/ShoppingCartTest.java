@@ -6,11 +6,9 @@ import pages.LoginPage;
 import pages.ProductPage;
 import pages.ShoppingCartPage;
 import base.BaseTest;
+import utils.TestData;
 
 public class ShoppingCartTest extends BaseTest {
-
-    private static final String PRODUCT_NAME_1 = "Sauce Labs Backpack";
-    private static final String PRODUCT_NAME_2 = "Sauce Labs Onesie";
 
     @Test
     public void addToCartTest() {
@@ -18,18 +16,18 @@ public class ShoppingCartTest extends BaseTest {
         // Login to application
         LoginPage loginPaceActions = new LoginPage(driver, wait);
         loginPaceActions.accessLoginPage();
-        loginPaceActions.validLogin("standard_user", "secret_sauce");
+        loginPaceActions.validLogin(TestData.STANDARD_USER, TestData.SECRET_SAUCE);
 
         // Add product to cart
         ProductPage productPageActions = new ProductPage(driver, wait);
-        productPageActions.addProductToCart(PRODUCT_NAME_1);
-        productPageActions.addProductToCart(PRODUCT_NAME_2);
+        productPageActions.addProductToCart(TestData.PRODUCT_NAME_1);
+        productPageActions.addProductToCart(TestData.PRODUCT_NAME_2);
 
         //Verify cart
         ShoppingCartPage shoppingCartPageActions = new ShoppingCartPage(driver, wait);
         shoppingCartPageActions.accessCartPageByButton();
-        Assert.assertTrue(shoppingCartPageActions.isProductDisplayedInCart(PRODUCT_NAME_1));
-        Assert.assertTrue(shoppingCartPageActions.isProductDisplayedInCart(PRODUCT_NAME_2));
+        Assert.assertTrue(shoppingCartPageActions.isProductDisplayedInCart(TestData.PRODUCT_NAME_1));
+        Assert.assertTrue(shoppingCartPageActions.isProductDisplayedInCart(TestData.PRODUCT_NAME_2));
     }
 
     @Test
@@ -38,22 +36,22 @@ public class ShoppingCartTest extends BaseTest {
         // Login to application
         LoginPage loginPaceActions = new LoginPage(driver, wait);
         loginPaceActions.accessLoginPage();
-        loginPaceActions.validLogin("standard_user", "secret_sauce");
+        loginPaceActions.validLogin(TestData.STANDARD_USER, TestData.SECRET_SAUCE);
 
         // Add products to cart
         ProductPage productPageActions = new ProductPage(driver, wait);
-        productPageActions.addProductToCart(PRODUCT_NAME_1);
-        productPageActions.addProductToCart(PRODUCT_NAME_2);
+        productPageActions.addProductToCart(TestData.PRODUCT_NAME_1);
+        productPageActions.addProductToCart(TestData.PRODUCT_NAME_2);
 
         // Remove products from cart
         ShoppingCartPage shoppingCartPageActions = new ShoppingCartPage(driver, wait);
         shoppingCartPageActions.accessCartPageByButton();
-        shoppingCartPageActions.removeProductFromCart(PRODUCT_NAME_1);
-        shoppingCartPageActions.removeProductFromCart(PRODUCT_NAME_2);
+        shoppingCartPageActions.removeProductFromCart(TestData.PRODUCT_NAME_1);
+        shoppingCartPageActions.removeProductFromCart(TestData.PRODUCT_NAME_2);
 
         // Verify cart is empty
-        Assert.assertFalse(shoppingCartPageActions.isProductDisplayedInCart(PRODUCT_NAME_1));
-        Assert.assertFalse(shoppingCartPageActions.isProductDisplayedInCart(PRODUCT_NAME_2));
+        Assert.assertFalse(shoppingCartPageActions.isProductDisplayedInCart(TestData.PRODUCT_NAME_1));
+        Assert.assertFalse(shoppingCartPageActions.isProductDisplayedInCart(TestData.PRODUCT_NAME_2));
         Assert.assertFalse(shoppingCartPageActions.isShoppingCartBadgeDisplayed());
     }
 }
