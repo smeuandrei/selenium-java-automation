@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage {
-    private static final String MAIN_URL = "https://www.saucedemo.com";
+    public static final String MAIN_URL = "https://www.saucedemo.com";
     private static final String USERNAME_FIELD = "user-name";
     private static final String PASSWORD_FIELD = "password";
     private static final String LOGIN_BUTTON = "login-button";

@@ -26,16 +26,10 @@ public class ProductTest extends BaseTest {
     private static final String PRODUCT_PRICE_4 = "$49.99";
 
     @Test
-    public void filterProductsByName() {
+    public void filterProductsByNameTest() {
         LoginPage loginPageActions = new LoginPage(driver, wait);
         loginPageActions.accessLoginPage();
         loginPageActions.validLogin("standard_user", "secret_sauce");
-
-        // try {
-        // Thread.sleep(30000);
-        // } catch (Exception e) {
-        // // TODO: handle exception
-        // }
 
         // Filter ascendent by product name
         ProductPage productPageActions = new ProductPage(driver, wait);
@@ -82,7 +76,7 @@ public class ProductTest extends BaseTest {
     }
 
     @Test
-    public void filterProductsByPrice() {
+    public void filterProductsByPriceTest() {
         LoginPage loginPageActions = new LoginPage(driver, wait);
         loginPageActions.accessLoginPage();
         loginPageActions.validLogin("standard_user", "secret_sauce");
@@ -132,7 +126,7 @@ public class ProductTest extends BaseTest {
     }
 
     @Test
-    public void addProductToCart() {
+    public void addProductToCartTest() {
         // Login to the application
         LoginPage loginPageActions = new LoginPage(driver, wait);
         loginPageActions.accessLoginPage();

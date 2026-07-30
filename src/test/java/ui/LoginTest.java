@@ -9,7 +9,7 @@ import base.BaseTest;
 public class LoginTest extends BaseTest {
 
     @Test
-    public void openStore() {
+    public void loginTest() {
         LoginPage loginPageActions = new LoginPage(driver, wait);
 
         loginPageActions.accessLoginPage();

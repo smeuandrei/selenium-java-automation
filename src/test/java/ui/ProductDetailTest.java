@@ -14,7 +14,7 @@ public class ProductDetailTest extends BaseTest {
     private static final String PRODUCT_PRICE_1 = "$29.99";
 
     @Test
-    public void verifyProductDetails() {
+    public void verifyProductDetailsTest() {
         // Valid login
         LoginPage loginPageActions = new LoginPage(driver, wait);
         loginPageActions.accessLoginPage();
