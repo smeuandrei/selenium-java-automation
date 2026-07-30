@@ -58,8 +58,17 @@ public class ProductPage {
     }
 
     public void navigateToProductPage(String productName) {
-        driver.findElement(By.cssSelector(PRODUCT_NAME)).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(PRODUCT_DETAIL_PAGE_NAME)));
+        List<WebElement> inventoryProducts = driver.findElements(By.cssSelector(INVENTORY_ITEM));
+        for (WebElement product : inventoryProducts) {
+            String actualProductName = product.findElement(By.cssSelector(PRODUCT_NAME)).getText();
+            if (actualProductName.equals(productName)) {
+                product.findElement(By.cssSelector(PRODUCT_NAME)).click();
+                wait.until(ExpectedConditions.textToBe(By.cssSelector(PRODUCT_DETAIL_PAGE_NAME), productName));
+                return;
+            }
+        }
+
+        throw new IllegalArgumentException("Product was not found: " + productName);
     }
 
     public void addProductToCart(String productName) {
