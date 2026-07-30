@@ -34,6 +34,10 @@ public class ShoppingCartPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(CHECKOUT_BUTTON)));
     }
 
+    public void clickCheckoutButton() {
+        driver.findElement(By.cssSelector(CHECKOUT_BUTTON)).click();
+    }
+
     public boolean isProductDisplayedInCart(String productName) {
         return driver.findElements(By.cssSelector(CART_ITEM)).stream()
                 .map(product -> product.findElement(By.cssSelector(CART_ITEM_NAME)).getText())
