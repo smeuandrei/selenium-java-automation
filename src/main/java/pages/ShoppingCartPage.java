@@ -39,9 +39,13 @@ public class ShoppingCartPage {
     }
 
     public boolean isProductDisplayedInCart(String productName) {
-        return driver.findElements(By.cssSelector(CART_ITEM)).stream()
-                .map(product -> product.findElement(By.cssSelector(CART_ITEM_NAME)).getText())
-                .anyMatch(actualProductName -> actualProductName.equals(productName));
+        for (WebElement product : driver.findElements(By.cssSelector(CART_ITEM))) {
+            String actualProductName = product.findElement(By.cssSelector(CART_ITEM_NAME)).getText();
+            if (actualProductName.equals(productName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void removeProductFromCart(String productName) {

@@ -41,6 +41,10 @@ public final class TestData {
     public static final String FIRST_NAME_REQUIRED_MESSAGE = "Error: First Name is required";
     public static final String LAST_NAME_REQUIRED_MESSAGE = "Error: Last Name is required";
     public static final String POSTAL_CODE_REQUIRED_MESSAGE = "Error: Postal Code is required";
+    public static final String CHECKOUT_OVERVIEW_TITLE = "Checkout: Overview";
+    public static final String CHECKOUT_COMPLETE_TITLE = "Checkout: Complete!";
+    public static final String ORDER_CONFIRMATION_MESSAGE = "Thank you for your order!";
+    public static final String ORDER_THANK_YOU_MESSAGE = "Your order has been dispatched, and will arrive just as fast as the pony can get there!";
 
     public static final String INVALID_CREDENTIALS_MESSAGE =
             "Epic sadface: Username and password do not match any user in this service";
